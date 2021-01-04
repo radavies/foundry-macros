@@ -6,6 +6,14 @@ My macros for Foundry VTT (https://foundryvtt.com/)
 
 In the StarTrekAdventures folder you will find macros to help play the Mophidius STA 2d20 RPG using Foundry.
 
+The macros do the following:
+
+- Roll x number of d20s to perform tasks - selecting an attribute and discipline to roll against and including a focus.
+- Roll 1d20 to aid tasks as the ship - selecting a system and department to roll against.
+- Roll x number of challenge dice for attacks and damage etc.
+- Display the current momentum.
+- Display the current threat.
+
 There is also a folder with some screen grabs in it to show how the macros work and how to setup the supporting items.
 
 To make these macros work you will need to do the following.
