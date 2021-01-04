@@ -17,7 +17,7 @@ promise.then(function (result) {
       effects += 1;
     }
   }
-  let chatData = {
+  const chatData = {
     user: game.userId,
     content: `Total: ${total}, Effects: ${effects}`,
   };
