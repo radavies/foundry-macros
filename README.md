@@ -38,7 +38,7 @@ In the attributes for the actor template create the following:
 You will need to create several items to support the macros.
 
 - Create an item called Momentum, give it a resource attribute called Momentum.
-- Create an item called Threat, give it a resource attribute called Threat.
+- Create an item called Threat, give it a number attribute called Threat.
 - Create an item with the name of your PC's ship (you will need to update the name of the ship in the SupportAsShip.js macro).
   - In the ship item create an attribute group called Systems and create a number attribute inside it for each of the systems (Engines, Communications)
   - Also create an attribute group called Departments and create a number attribute inside it for each of the departments (Command, Conn, etc)
