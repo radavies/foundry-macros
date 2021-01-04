@@ -1,2 +1,2 @@
 # foundry-macros
-Macros for Foundry VTT
+My macros for Foundry VTT (https://foundryvtt.com/)
