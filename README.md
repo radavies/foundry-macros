@@ -6,6 +6,8 @@ My macros for Foundry VTT (https://foundryvtt.com/)
 
 In the StarTrekAdventures folder you will find macros to help play the Mophidius STA 2d20 RPG using Foundry.
 
+There is also a folder with some screen grabs in it to show how the macros work and how to setup the supporting items.
+
 To make these macros work you will need to do the following.
 
 ### System
