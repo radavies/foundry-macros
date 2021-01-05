@@ -52,6 +52,11 @@ You will need to create several items to support the macros.
 - Create an item with the name of your PC's ship (you will need to update the name of the ship in the SupportAsShip.js macro).
   - In the ship item create an attribute group called Systems and create a number attribute inside it for each of the systems (Engines, Communications)
   - Also create an attribute group called Departments and create a number attribute inside it for each of the departments (Command, Conn, etc)
+- Create an item for each of the weapons you want to support. Each weapon needs the following attributes:
+  - Damage (number), the number of challenge dice that weapon gives
+  - Type (string), either ranged or melee
+
+For the weapons, you must give these to the players in their character sheet. The macro currently only supports each player having one ranged and one melee weapon.
 
 _Make sure the PCs have at least observer permissions on these items._
 
