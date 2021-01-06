@@ -35,11 +35,7 @@ const numberofDice = player.data.data.attributes.Rolling.NumberOfD20s.value;
 
 const successScore = attributeScore + disciplineScore;
 
-const chatData = {
-  user: game.userId,
-  content: `Rolling ${numberofDice}d20 Vs ${activeAttribute} (${attributeScore}) & ${activeDiscipline} (${disciplineScore}) = ${successScore}`,
-};
-ChatMessage.create(chatData, {});
+let chatContent = `<p>Rolling <b>${numberofDice}d20</b> Vs <b>${activeAttribute}</b> (${attributeScore}) & <b>${activeDiscipline}</b> (${disciplineScore}) = ${successScore}</p>`;
 
 const roll = new Roll(`${numberofDice}d20cs<=${successScore}`);
 roll.evaluate();
@@ -47,22 +43,24 @@ roll.evaluate();
 const promise = roll.getTooltip();
 
 promise.then(function (result) {
-  const chatData = { user: game.userId, content: result };
-  ChatMessage.create(chatData, {});
-});
 
-if (player.data.data.attributes.Rolling.ActiveFocus.value) {
-  let extraSuccess = 0;
-  for (let i = 0; i < roll.terms[0].results.length; i++) {
-    if (roll.terms[0].results[i].result <= disciplineScore) {
-      extraSuccess += 1;
+  if (player.data.data.attributes.Rolling.ActiveFocus.value) {
+    let extraSuccess = 0;
+    for (let i = 0; i < roll.terms[0].results.length; i++) {
+      if (roll.terms[0].results[i].result <= disciplineScore) {
+        extraSuccess += 1;
+      }
+    }
+    if (extraSuccess > 0) {
+      chatContent += `<p><i>+${extraSuccess} successes due to active focus.</i></p>`
     }
   }
-  if (extraSuccess > 0) {
-    const chatData = {
-      user: game.userId,
-      content: `+${extraSuccess} successes due to active focus.`,
-    };
-    ChatMessage.create(chatData, {});
-  }
-}
+
+  chatContent += result;
+  
+  const chatData = {
+    user: game.userId,
+    content: chatContent,
+  };
+  ChatMessage.create(chatData, {});
+});

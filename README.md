@@ -84,3 +84,7 @@ Create a macro for each of the files here you want to use. Make sure and select 
 You can give each of the macros a little icon if you want them to look better in the tool bar.
 
 _Make sure the PCs have observer permissions on the macros so they can see them._
+
+### Modules
+
+For the best experience you should install and activate the "Actually Private Rolls" module.

@@ -33,11 +33,7 @@ const departmentScore =
 
 const successScore = systemScore + departmentScore;
 
-const chatData = {
-  user: game.userId,
-  content: `Rolling ship support - ${activeSystem} (${systemScore}) & ${activeDepartment} (${departmentScore}) = ${successScore}`,
-};
-ChatMessage.create(chatData, {});
+let chatContent = `<p>Rolling ship support - <b>${activeSystem}</b> (${systemScore}) & <b>${activeDepartment}</b> (${departmentScore}) = ${successScore}</p>`;
 
 const roll = new Roll(`1d20cs<=${successScore}`);
 roll.evaluate();
@@ -45,20 +41,22 @@ roll.evaluate();
 const promise = roll.getTooltip();
 
 promise.then(function (result) {
-  const chatData = { user: game.userId, content: result };
-  ChatMessage.create(chatData, {});
-});
 
-let extraSuccess = 0;
-for (let i = 0; i < roll.terms[0].results.length; i++) {
-  if (roll.terms[0].results[i].result <= departmentScore) {
-    extraSuccess += 1;
+  let extraSuccess = 0;
+  for (let i = 0; i < roll.terms[0].results.length; i++) {
+    if (roll.terms[0].results[i].result <= departmentScore) {
+      extraSuccess += 1;
+    }
   }
-}
-if (extraSuccess > 0) {
-  let chatData = {
+  if (extraSuccess > 0) {
+    chatContent += `<p><i>+${extraSuccess} successes from ship's department.</i></p>`;
+  }
+
+  chatContent += result;
+  
+  const chatData = {
     user: game.userId,
-    content: `+${extraSuccess} successes from ship's department.`,
+    content: chatContent,
   };
   ChatMessage.create(chatData, {});
-}
+});

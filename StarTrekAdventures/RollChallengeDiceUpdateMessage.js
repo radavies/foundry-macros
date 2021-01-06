@@ -9,6 +9,8 @@ const promise = table.drawMany(timesToRoll, { displayChat: false });
 
 let chatContent = '';
 
+const log = new ChatLog();
+
 promise.then(function (result) {
 
   let total = 0;
@@ -27,17 +29,16 @@ promise.then(function (result) {
 
   chatContent = `<p><b>Total:</b> ${total}, <b>Effects:</b> ${effects}</p>`;
 
-  // This is a bit of a hack, I'm using blind roll to "hide" the automatic message from toMessage()
-  // I then get the message and repost it with the extra context added.
-  const promise = table.toMessage(result.results, {roll: result.roll, messageOptions:{rollMode: "blindroll"}});
+  const promise = table.toMessage(result.results, {roll: result.roll});
   promise.then(function (result) {
-    chatContent = result.data.content + chatContent;
 
-    const chatData = {
-      user: game.userId,
-      content: chatContent,
-    };
-    ChatMessage.create(chatData, {});
+    //This is a bit hacky, I grab the last message posted (which should be from toMessage)
+    //Then update the content by adding the extra message context
+    //Issue with this approach is only the current player can see the updated message.
+    chatContent = result.data.content + chatContent;
+    game.messages.entries[game.messages.entries.length -1].data.content = chatContent;
+    log.updateMessage(game.messages.entries[game.messages.entries.length -1]);
+
   });
 
 });
