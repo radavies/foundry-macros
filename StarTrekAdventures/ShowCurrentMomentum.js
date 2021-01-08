@@ -1,4 +1,4 @@
-const x = game.items.entities.find((i) => i.name === "Momentum");
-const message = x.data.data.attributes["Momentum"].value;
-const chatData = { user: game.userId, content: "<b>Momentum:</b> " + message };
+const momentumItem = game.items.entities.find((i) => i.name === "Momentum");
+const message = `<b>Momentum:</b> ${momentumItem.data.data.attributes["Momentum"].value}`;
+const chatData = { user: game.userId, content: message };
 ChatMessage.create(chatData, {});
