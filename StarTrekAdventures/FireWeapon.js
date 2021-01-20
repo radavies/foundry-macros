@@ -7,7 +7,7 @@ let weaponDamage = 1;
 let weaponName = "weapon";
 for(let i=0; i<player.items.size; i++){
     const item = player.items.entries[i];
-    if(item.data.data.attributes.Type.value === "Ranged"){
+    if(item.data.data.attributes.Type && item.data.data.attributes.Type.value === "Ranged"){
         weaponDamage = item.data.data.attributes.Damage.value;
         weaponName = item.name;
     }

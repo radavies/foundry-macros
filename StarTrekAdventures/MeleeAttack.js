@@ -7,7 +7,7 @@ let weaponDamage = 1;
 let weaponName = "melee weapon";
 for(let i=0; i<player.items.size; i++){
     const item = player.items.entries[i];
-    if(item.data.data.attributes.Type.value === "Melee"){
+    if(item.data.data.attributes.Type && item.data.data.attributes.Type.value === "Melee"){
         weaponDamage = item.data.data.attributes.Damage.value;
         weaponName = item.name;
     }
