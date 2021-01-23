@@ -55,8 +55,9 @@ You will need to create several items to support the macros.
 - Create an item for each of the weapons you want to support. Each weapon needs the following attributes:
   - Damage (number), the number of challenge dice that weapon gives
   - Type (string), either ranged or melee
+  - Active (boolean), if the player is currently using this weapon
 
-For the weapons, you must give these to the players in their character sheet. The macro currently only supports each player having one ranged and one melee weapon.
+For the weapons, you must give these to the players in their character sheet.
 
 _Make sure the PCs have at least observer permissions on these items._
 
