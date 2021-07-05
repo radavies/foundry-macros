@@ -6,14 +6,15 @@ const securityValue =
 let weaponDamage = 1;
 let weaponName = "melee weapon";
 let weaponFound = false;
-for(let i=0; i<player.items.size; i++){
-    const item = player.items.entries[i];
-    if(item.data.data.attributes.Type && item.data.data.attributes.Type.value === "Melee" && item.data.data.attributes.Active.value === true){
-        weaponDamage = item.data.data.attributes.Damage.value;
-        weaponName = item.name;
-        weaponFound = true;
-    }
-}
+
+
+player.items.forEach(function func(item) {
+  if(item.data.data.attributes.Type && item.data.data.attributes.Type.value === "Melee" && item.data.data.attributes.Active.value === true){
+    weaponDamage = item.data.data.attributes.Damage.value;
+    weaponName = item.name;
+    weaponFound = true;
+  }
+});
 
 if(weaponFound){
   const timesToRoll = securityValue + weaponDamage;
