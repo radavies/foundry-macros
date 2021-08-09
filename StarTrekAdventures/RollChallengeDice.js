@@ -3,7 +3,7 @@ const player = game.users.current.character;
 const timesToRoll =
   player.data.data.attributes.Rolling.NumberOfChallengeDice.value;
 
-const table = game.tables.entities.find((t) => t.name === "Challenge Dice");
+const table = game.tables.contents.find((t) => t.name === "Challenge Dice");
 
 const promise = table.drawMany(timesToRoll, { displayChat: false });
 
@@ -29,7 +29,7 @@ promise.then(function (result) {
 
   // This is a bit of a hack, I'm using blind roll to "hide" the automatic message from toMessage()
   // I then get the message and repost it with the extra context added.
-  const promise = table.toMessage(result.results, {roll: result.roll, messageOptions:{rollMode: "blindroll"}});
+  const promise = table.toMessage(result.results, { roll: result.roll, messageOptions: { rollMode: "blindroll" } });
   promise.then(function (result) {
     chatContent = result.data.content + chatContent;
 
